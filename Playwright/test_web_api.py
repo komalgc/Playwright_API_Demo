@@ -7,6 +7,10 @@ def test_webapi(playwright:Playwright):
     page=context.new_page()
 
 
+    #create order  -> orderId
+    #apiutils =
+
+    #login
     page.goto("https://rahulshettyacademy.com/client/")
     page.get_by_placeholder("email@example.com").fill("rahul.m.lokurte@gmail.com")
     page.get_by_placeholder("enter your passsword").fill("Wipro@123")
