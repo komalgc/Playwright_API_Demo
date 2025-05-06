@@ -18,8 +18,17 @@ class APIBase:
         token_data = self.gettoken(playwright)
         token = token_data["token"]
         apirequestcontext=playwright.request.new_context(base_url="https://rahulshettyacademy.com")
-        apirequestcontext.post("api/ecom/order/create-order",
+        response2= apirequestcontext.post("api/ecom/order/create-order",
                                data=ordersPayload,
                                headers={"Authorization" : token,
                                         "Content-Type" : "application/json"})
+
+        print(response2.json())
+        response_body = response2.json()
+        orderId= response_body["orders"][0]
+        return orderId
+
+
+
+
 
