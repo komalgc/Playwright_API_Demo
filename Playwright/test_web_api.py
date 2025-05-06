@@ -1,5 +1,7 @@
 from playwright.sync_api import Playwright
 
+from utils.apibase import APIBase
+
 
 def test_webapi(playwright:Playwright):
     browser=playwright.chromium.launch(headless=False)
@@ -8,7 +10,8 @@ def test_webapi(playwright:Playwright):
 
 
     #create order  -> orderId
-    #apiutils =
+    apiutils = APIBase()
+    apiutils.createorder(playwright)
 
     #login
     page.goto("https://rahulshettyacademy.com/client/")
