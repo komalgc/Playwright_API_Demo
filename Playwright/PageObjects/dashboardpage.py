@@ -1,3 +1,6 @@
+from Playwright.PageObjects.orderhistorypage import OrdersHistoryPage
+
+
 class DashboardPage:
 
 
@@ -6,3 +9,5 @@ class DashboardPage:
 
     def  selectOrdersNavLink(self):
         self.page.get_by_role("button", name="ORDERS").click()
+        orderhistory = OrdersHistoryPage(self.page)
+        return orderhistory

@@ -31,13 +31,13 @@ def test_webapi(playwright:Playwright, user_credentials):
     #loginpage
     loginPage =LoginPage(page)
     loginPage.navigate()
-    loginPage.login(useremail,userpassword)
+    dashboardpage=loginPage.login(useremail,userpassword)
 
     #dashboardpage
-    dashboard = DashboardPage(page)
-    dashboard.selectOrdersNavLink()
+
+    orderhistory = dashboardpage.selectOrdersNavLink()
+    orderdetailspage= orderhistory.viewOrders(orderId)
 
     #orders history page -> order is present
-    row = page.locator("tr").filter(has_text=orderId)
-    row.get_by_role("button", name="View").click()
-    expect(page.locator(".tagline")).to_contain_text("Thank you for Shopping With Us")
+    orderdetailspage.orderdetails()
+
