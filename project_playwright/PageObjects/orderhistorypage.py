@@ -1,4 +1,4 @@
-from Playwright.PageObjects.orderdetailspage import OrderDetailsPage
+from project_playwright.PageObjects.orderdetailspage import OrderDetailsPage
 
 
 class OrdersHistoryPage:

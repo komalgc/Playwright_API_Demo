@@ -1,4 +1,4 @@
-from Playwright.PageObjects.dashboardpage import DashboardPage
+from project_playwright.PageObjects.dashboardpage import DashboardPage
 
 
 class LoginPage:

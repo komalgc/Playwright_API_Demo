@@ -1,4 +1,5 @@
-from Playwright.PageObjects.orderhistorypage import OrdersHistoryPage
+
+from project_playwright.PageObjects.orderhistorypage import OrdersHistoryPage
 
 
 class DashboardPage:

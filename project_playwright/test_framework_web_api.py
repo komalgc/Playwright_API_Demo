@@ -1,10 +1,16 @@
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+
+
 import json
 
 import pytest
-from playwright.sync_api import Playwright, expect
+from playwright.sync_api import Playwright
 
-from Playwright.PageObjects.dashboardpage import DashboardPage
-from Playwright.PageObjects.loginpage import LoginPage
+from project_playwright.PageObjects import dashboardpage
+from project_playwright.PageObjects.dashboardpage import DashboardPage
+from project_playwright.PageObjects.loginpage import LoginPage
 from utils.apibase import APIBase
 
 # Json-->util-->access to test
@@ -14,14 +20,10 @@ with open('data/credentials.json') as f:
     user_credential_list = testdata['user_credentials']
 
 @pytest.mark.parametrize('user_credentials',user_credential_list)
-def test_webapi(playwright:Playwright, user_credentials):
+def test_webapi(playwright:Playwright, browserInstance, user_credentials):
     useremail = user_credentials["userEmail"]
     userpassword = user_credentials["userPassword"]
 
-
-    browser=playwright.chromium.launch(headless=False)
-    context=browser.new_context()
-    page=context.new_page()
 
     #create order  -> orderId
     apiutils = APIBase()
@@ -29,10 +31,9 @@ def test_webapi(playwright:Playwright, user_credentials):
 
 
     #loginpage
-    loginPage =LoginPage(page)
+    loginPage =LoginPage(browserInstance)
     loginPage.navigate()
-    dashboardpage=loginPage.login(useremail,userpassword)
-
+    dashboardpage = loginPage.login(useremail, userpassword)
     #dashboardpage
 
     orderhistory = dashboardpage.selectOrdersNavLink()
