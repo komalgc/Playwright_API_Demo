@@ -1,7 +1,7 @@
 from playwright.sync_api import Playwright, expect
 from pytest_playwright.pytest_playwright import browser
 
-from utils.apibase import APIBase
+from project_playwright.utils.apibase import APIBase
 
 
 def test_localstoragetoken(playwright:Playwright):
@@ -14,7 +14,7 @@ def test_localstoragetoken(playwright:Playwright):
     context=browser.new_context()
     page=context.new_page()
 
-    #getthe token for bypassing loginn
+    #getthe token for bypassing login
     page.add_init_script(f"""localStorage.setItem('token','{getToken}')""")
     page.goto("https://rahulshettyacademy.com/client/")
     page.get_by_role("button", name="ORDERS").click()

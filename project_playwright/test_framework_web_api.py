@@ -11,7 +11,7 @@ from playwright.sync_api import Playwright
 from project_playwright.PageObjects import dashboardpage
 from project_playwright.PageObjects.dashboardpage import DashboardPage
 from project_playwright.PageObjects.loginpage import LoginPage
-from utils.apibase import APIBase
+from utils.apibaseframework import APIBase
 
 # Json-->util-->access to test
 with open('data/credentials.json') as f:

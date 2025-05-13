@@ -13,7 +13,7 @@ def user_credentials(request):
     return request.param
 
 
-@pytest.fixture(scope="session")
+@pytest.fixture
 def browserInstance(playwright,request):
     browser_name = request.config.getoption("browser_name")
     if browser_name == "chrome":
