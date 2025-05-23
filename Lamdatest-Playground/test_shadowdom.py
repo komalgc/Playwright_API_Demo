@@ -1,4 +1,4 @@
-from playwright.sync_api import Playwright
+from playwright.sync_api import Playwright, expect
 
 
 def test_shadowdom(playwright:Playwright):
@@ -7,4 +7,7 @@ def test_shadowdom(playwright:Playwright):
     page = context_info.new_page()
 
     page.goto("https://www.lambdatest.com/selenium-playground/shadow-dom")
-    page.locator("div", has_text="Name").fill("Komal")
+
+    page.locator("#shadow_host").shadow_root().get_by
+    expect(page.locator("div >> shadow=button").filter(has_text="Shadow DOM example")).to_contain_text("Shadow DOM example")
+
